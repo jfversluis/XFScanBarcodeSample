@@ -14,5 +14,13 @@ namespace ScanBarcodeSample
         {
             InitializeComponent();
         }
+
+        void ZXingScannerView_OnScanResult(ZXing.Result result)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                scanResultText.Text = result.Text + " (type: " + result.BarcodeFormat.ToString() + ")";
+            });
+        }
     }
 }
